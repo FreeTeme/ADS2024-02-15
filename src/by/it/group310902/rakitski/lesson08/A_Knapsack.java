@@ -37,25 +37,25 @@ Sample Output 2:
 
 public class A_Knapsack {
 
-    int getMaxWeight(InputStream stream ) {
+    int getMaxWeight(InputStream stream) {
         //!!!!!!!!!!!!!!!!!!!!!!!!!     НАЧАЛО ЗАДАЧИ     !!!!!!!!!!!!!!!!!!!!!!!!!
         Scanner scanner = new Scanner(stream);
-        int w=scanner.nextInt();
-        int n=scanner.nextInt();
-        int gold[]=new int[n];
+        int w = scanner.nextInt();
+        int n = scanner.nextInt();
+        int gold[] = new int[n];
         for (int i = 0; i < n; i++) {
-            gold[i]=scanner.nextInt();
+            gold[i] = scanner.nextInt();
         }
         Arrays.sort(gold);
-        int dp[]=new int[w+1];
-        for(int i=1;i<=w;++i){
-            for(int j=0;j<n;++j){
-                if(gold[j]<=i){
-                    dp[i]=Math.max(dp[i],dp[i-gold[j]]+gold[j]);
+        int dp[] = new int[w + 1];
+        for (int i = 1; i <= w; ++i) {
+            for (int j = 0; j < n; ++j) {
+                if (gold[j] <= i) {
+                    dp[i] = Math.max(dp[i], dp[i - gold[j]] + gold[j]);
                 }
             }
         }
-        
+
 
         //!!!!!!!!!!!!!!!!!!!!!!!!!     КОНЕЦ ЗАДАЧИ     !!!!!!!!!!!!!!!!!!!!!!!!!
         return dp[w];
@@ -65,7 +65,7 @@ public class A_Knapsack {
     public static void main(String[] args) throws FileNotFoundException {
         InputStream stream = A_Knapsack.class.getResourceAsStream("dataA.txt");
         A_Knapsack instance = new A_Knapsack();
-        int res=instance.getMaxWeight(stream);
+        int res = instance.getMaxWeight(stream);
         System.out.println(res);
     }
 }
